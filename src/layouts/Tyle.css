@@ -1,0 +1,24 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.Link {
+	margin-right: 20px;
+}
+.fontweight {
+	font-weight: normal;
+}
+.fontstyle {
+	color: pink;
+	font-weight: normal;
+}
+.fontweight {
+	font-weight: normal;
+}
+.image {
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+}
