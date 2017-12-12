@@ -7,7 +7,7 @@ var div = {
 }
 var header = {display:'inline-block',width:'15%'}
 var imgs = {
-	width:'100%',
+	width:'130px',
 	marginTop:'7px'
 }
 var main = {display:'inline-block',float:'right'}
