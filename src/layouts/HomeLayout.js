@@ -5,9 +5,9 @@ var div = {
 	height:'70px',
 	lineHeight:'70px'
 }
-var header = {display:'inline-block'}
+var header = {display:'inline-block',width:'15%'}
 var imgs = {
-	width:'18%',
+	width:'100%',
 	marginTop:'7px'
 }
 var main = {display:'inline-block',float:'right'}
