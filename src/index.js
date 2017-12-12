@@ -10,9 +10,10 @@ import HomeLayout from './layouts/HomeLayout';
 import Home from './paging/Home';
 import About from './paging/About';
 
+import Cycle from './paging/LifeCycle'
 
-var style = {fontWeight:"normal"} // css
-var order = {listStyleType:"none"}
+var style = {fontWeight:"normal",color:'orange'} // css
+var order = {listStyleType:"none",margin:'10px 0'}
 
 
 
@@ -20,8 +21,8 @@ const BasicExample = () => (
   <Router>
     <div>
       <HomeLayout>
-        <Link to="/" style={{color:'green'}} className="Link">Merry Christmas</Link>
-        <Link to="/about" style={{color:'blue'}} className="Link">Santa Claus</Link>
+        <Link to="/" style={{color:'pink'}} className="Link">Merry Christmas</Link>
+        <Link to="/about" style={{color:'green'}} className="Link">Santa Claus</Link>
         <Link to="/topics" style={{color:'orange'}}>About Legend</Link>
       </HomeLayout>
       
@@ -58,7 +59,7 @@ const Topics = ({ match }) => (
 
     <Route path={`${match.url}/:topicId`} component={Topic}/>
     <Route exact path={match.url} render={() => (
-      <h3 className="fontweight">Please Select a Legend.</h3>
+      <h3 className="fontweight" style={{color:'orange'}}>Please Select a Legend.</h3>
     )}/>
   </div>
 )
