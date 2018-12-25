@@ -8,6 +8,7 @@ class HelloWorld extends Component {
   }
 
   clickHander = () => {
+    console.log(this.refs) // {}
     const { name1 = 'Tom', name2 = 'Jack' } = this.props;
 
     if (this.state.switch === 0) {
@@ -25,9 +26,26 @@ class HelloWorld extends Component {
     }
   }
 
+  refCallback = (elem) => {
+    console.log(elem)
+  }
+
+  /*
+  生命周期
+  此方法指在组件第一次渲染完成后执行
+   */
+  componentDidMount (props) {
+    console.log(this.refs)
+  }
+
   render () {
     return (
-      <div onClick={this.clickHander}>{ this.state.name } say: Hello World!</div>
+      <div className="container" onClick={this.clickHander}>
+        { this.state.name } say: Hello World!
+        <div ref="hello" className="hello">Hello</div>
+        {/* 回调函数 */}
+        <div ref={this.refCallback} className="world">World</div>
+      </div>
     )
   }
 }
