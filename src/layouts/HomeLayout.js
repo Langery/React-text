@@ -1,6 +1,7 @@
 import React from 'react';
 import './Tyle.css'
 
+// 定义css 
 var div = {
 	height:'70px',
 	lineHeight:'70px'
