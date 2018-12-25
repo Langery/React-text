@@ -17,7 +17,7 @@ const HomeIndex = () => {
     <div>
       <HelloWorld/>
     </div>
-  )
+  );
 };
 
 const root = document.querySelector('#root');
