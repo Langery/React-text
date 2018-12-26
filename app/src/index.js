@@ -9,17 +9,31 @@ import { render } from 'react-dom';
 // } from 'react-router-dom';
 
 // 引入 helloWorld.jsx
-import HelloWorld from './helloWorld';
+// import HelloWorld from './helloWorld';
+//
+// const HomeIndex = () => {
+//   // return 返回数据值
+//   return (
+//     <div>
+//       <HelloWorld/>
+//     </div>
+//   );
+// };
 
-const HomeIndex = () => {
-  // return 返回数据值
+// 引入HomeIndex.jsx
+import BoxIndex from './components/Home/Box';
+import Btn from './layouts/Botton';
+import CheckBoxIndex from './layouts/CheckBox';
+
+const MainIndex = () => {
   return (
     <div>
-      <HelloWorld/>
+      <BoxIndex/>
+      <Btn/>
+      <CheckBoxIndex/>
     </div>
   );
 };
 
 const root = document.querySelector('#root');
-
-render(<HomeIndex/>, root);
+render(<MainIndex/>, root);
