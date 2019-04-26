@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Button from 'antd/lib/button';
 import './App.css';
-
+import IndexHome from './view/mainView/homeIndex'
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
-        <Button type="primary">Button</Button>
+      <div>
+        <IndexHome></IndexHome>
       </div>
     );
   }
