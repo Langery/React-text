@@ -1,9 +1,9 @@
 .row1{
-  background: blue;
+  background: #1890ff;
   text-align: center;
   color: #ffffff;
-}
-.row2{
-  background: greenyellow;
-  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  top: 0px;
 }
