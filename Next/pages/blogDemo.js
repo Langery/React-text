@@ -1,6 +1,5 @@
 // This is the Link API
 import Link from 'next/link'
-// import Header from '../components/Header'
 
 import Layout from '../components/MyLayout'
 
@@ -30,6 +29,9 @@ const BlogDemo = () => (
     </ul>
     <style jsx>
     {`
+      h1 {
+        font-weight: normal;
+      }
       h1, a {
         font-family: "Arial";
       }
