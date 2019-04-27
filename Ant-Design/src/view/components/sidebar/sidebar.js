@@ -18,8 +18,15 @@ class SiderDemo extends Component {
 
   render () {
     return (
-      <Layout>
+      <Layout
+        style={{
+          minHeight: '100%'
+        }}
+      >
         <Sider
+          style={{
+            minHeight: '100%'
+          }}
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
@@ -53,7 +60,7 @@ class SiderDemo extends Component {
               margin: '24px 16px',
               padding: 24,
               background: '#fff',
-              minHeight: 280
+              minHeight: 300
             }}
           >
             Content
