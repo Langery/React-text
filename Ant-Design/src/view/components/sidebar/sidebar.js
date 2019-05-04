@@ -66,7 +66,6 @@ class SiderDemo extends Component {
               minHeight: 300
             }}
           >
-            {/* Content */}
             {children}
           </Content>
         </Layout>
