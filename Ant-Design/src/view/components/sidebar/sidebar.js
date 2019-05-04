@@ -17,6 +17,9 @@ class SiderDemo extends Component {
   }
 
   render () {
+
+    const { children } = this.props
+
     return (
       <Layout
         style={{
@@ -63,7 +66,8 @@ class SiderDemo extends Component {
               minHeight: 300
             }}
           >
-            Content
+            {/* Content */}
+            {children}
           </Content>
         </Layout>
       </Layout>
