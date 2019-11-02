@@ -8,17 +8,50 @@ const { Header, Sider, Content } = Layout
 class SiderDemo extends Component {
   state = {
     collapsed: false,
+    menuList: [
+      {
+        key: 'one',
+        type: 'user',
+        span: 'nav 1'
+      },
+      {
+        key: 'two',
+        type: 'video-camera',
+        span: 'nav 2'
+      },
+      {
+        key: 'three',
+        type: 'upload',
+        span: 'nav 3'
+      }
+    ],
+    current: 'one'
   }
 
   toggle = () => {
+    // 顶部点击隐藏或展开左侧目录
     this.setState({
       collapsed: !this.state.collapsed,
     })
   }
+  routLink = (item, key, keyPath, domEvent, e) =>　{
+    console.log(item)
+    console.log(key)
+    console.log(keyPath)
+    console.log(domEvent)
+    console.log(e)
+  }
+  
 
   render () {
 
     const { children } = this.props
+    const showMenu = this.state.menuList.map(item => 
+      <Menu.Item key={item.key}>
+        <Icon type={item.type} />
+        <span>{item.span}</span>
+      </Menu.Item>
+    )
 
     return (
       <Layout
@@ -28,26 +61,15 @@ class SiderDemo extends Component {
       >
         <Sider
           style={{
-            minHeight: '100%'
+            minHeight: '500px'
           }}
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
         >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item>
-              <Icon type="video-camera"/>
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item>
-              <Icon type="upload"/>
-              <span>nav 3</span>
-            </Menu.Item>
+          <Menu theme="dark" mode="inline" selectedKeys={[this.state.current]} onClick={this.routLink}>
+            {showMenu}
           </Menu>
         </Sider>
         <Layout>
