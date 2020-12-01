@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 // eslint-disable-next-line
 import { Layout, Menu, Icon } from 'antd';
+import ContentDemo from '../content/content';
+import HeaderDemo from '../header/header'
 import './sidebar.css';
 
-const { Header, Sider, Content } = Layout
+const { Sider } = Layout
 
 class SiderDemo extends Component {
   state = {
@@ -28,12 +30,13 @@ class SiderDemo extends Component {
     current: 'one'
   }
 
-  toggle = () => {
+  toggle = function() {
     // 顶部点击隐藏或展开左侧目录
     this.setState({
       collapsed: !this.state.collapsed,
     })
   }
+
   routLink = (item, key, keyPath, domEvent, e) =>　{
     console.log(item)
     console.log(key)
@@ -44,8 +47,6 @@ class SiderDemo extends Component {
   
 
   render () {
-
-    const { children } = this.props
     const showMenu = this.state.menuList.map(item => 
       <Menu.Item key={item.key}>
         <Icon type={item.type} />
@@ -73,23 +74,15 @@ class SiderDemo extends Component {
           </Menu>
         </Sider>
         <Layout>
-          <Header style={{background: '#fff', padding: 0}}>
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
-            />
-          </Header>
-          <Content
-            style={{
-              margin: '24px 16px',
-              padding: 24,
-              background: '#fff',
-              minHeight: 300
-            }}
-          >
-            {children}
-          </Content>
+          {/* header */}
+          <HeaderDemo
+            state={this.state}
+            callback={this.toggle.bind(this)}
+          ></HeaderDemo>
+          {/* content */}
+          <ContentDemo
+            props={this.props}
+          ></ContentDemo>
         </Layout>
       </Layout>
     )
