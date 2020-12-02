@@ -1,10 +1,23 @@
 import React from "react";
+import NavOne from '../nav/nav1/nav1'
 
 import { Layout } from 'antd';
 const { Content } = Layout
 
 const ContentDemo = (props) => {
-  const { children } = props.props;
+  // const { children } = props.props;
+  let children;
+  const key = props.item.key;
+  if (key === 'one') {
+    // 通过 key 的不同来动态获取内容信息
+    children = (
+      <NavOne></NavOne>
+    )
+  } else if (key === 'two') {
+
+  } else if (key === 'three') {
+    
+  }
 
   return (
     <Content
@@ -15,7 +28,8 @@ const ContentDemo = (props) => {
         minHeight: 300
       }}
     >
-      {children}
+      {/* 动态修改页面内容，仿插槽 */}
+      { children }
     </Content>
   )
 }

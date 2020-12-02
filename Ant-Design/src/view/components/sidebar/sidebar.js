@@ -5,7 +5,7 @@ import ContentDemo from '../content/content';
 import HeaderDemo from '../header/header'
 import './sidebar.css';
 
-const { Sider } = Layout
+const { Sider } = Layout;
 
 class SiderDemo extends Component {
   state = {
@@ -27,7 +27,10 @@ class SiderDemo extends Component {
         span: 'nav 3'
       }
     ],
-    current: 'one'
+    current: 'one',
+    item: {
+      key: 'one'
+    }
   }
 
   toggle = function() {
@@ -37,12 +40,12 @@ class SiderDemo extends Component {
     })
   }
 
-  routLink = (item, key, keyPath, domEvent, e) =>　{
-    console.log(item)
-    console.log(key)
-    console.log(keyPath)
-    console.log(domEvent)
-    console.log(e)
+  routLink = (item) =>　{
+    // console.log(item)
+    this.setState({
+      current: item.key,
+      item: item
+    })
   }
   
 
@@ -82,6 +85,7 @@ class SiderDemo extends Component {
           {/* content */}
           <ContentDemo
             props={this.props}
+            item={this.state.item}
           ></ContentDemo>
         </Layout>
       </Layout>
