@@ -1,20 +1,24 @@
 import React from "react";
-import { Breadcrumb, Form, Input } from 'antd';
+import BreadCrumbModel from '../../breadcrumb/breadcrumb';
+import { Form, Input } from 'antd';
 
 const NavOne = () => {
   const layout = {
     labelCol: { span: 4 },
     wrapperCol: { span: 14 },
-  }
+  };
+  const order = [
+    'Home', 'Nav 1'
+  ];
   return (
     <div className="nav-one">
-      <Breadcrumb>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>Nav 1</Breadcrumb.Item>
-      </Breadcrumb>
+      <BreadCrumbModel
+        order={order}
+      ></BreadCrumbModel>
       <Form
         {...layout}
         name="form"
+        layout="horizontal"
       >
         <Form.Item
           label="Input"
@@ -22,6 +26,13 @@ const NavOne = () => {
           rules={[]}
         >
           <Input />
+        </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[]}
+        >
+          <Input.Password />
         </Form.Item>
       </Form>
     </div>

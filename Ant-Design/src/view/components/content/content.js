@@ -1,5 +1,7 @@
 import React from "react";
 import NavOne from '../nav/nav1/nav1'
+import NavTwo from '../nav/nav2/nav2'
+import NavThree from '../nav/nav3/nav3'
 
 import { Layout } from 'antd';
 const { Content } = Layout
@@ -14,9 +16,13 @@ const ContentDemo = (props) => {
       <NavOne></NavOne>
     )
   } else if (key === 'two') {
-
+    children = (
+      <NavTwo></NavTwo>
+    )
   } else if (key === 'three') {
-    
+    children = (
+      <NavThree></NavThree>
+    )
   }
 
   return (
