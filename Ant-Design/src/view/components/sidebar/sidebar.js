@@ -1,58 +1,54 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 // eslint-disable-next-line
-import { Layout, Menu, Icon } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import { Layout, Menu} from 'antd';
 import ContentDemo from '../content/content';
 import HeaderDemo from '../header/header'
 import './sidebar.css';
 
 const { Sider } = Layout;
 
-class SiderDemo extends Component {
-  state = {
-    collapsed: false,
-    menuList: [
-      {
-        key: 'one',
-        type: 'user',
-        span: 'nav 1'
-      },
-      {
-        key: 'two',
-        type: 'video-camera',
-        span: 'nav 2'
-      },
-      {
-        key: 'three',
-        type: 'upload',
-        span: 'nav 3'
-      }
-    ],
-    current: 'one',
-    item: {
-      key: 'one'
+const SiderDemo = props => {
+
+  // eslint-disable-next-line
+  const [collapsed, setCollapsed] = useState(false);
+  // eslint-disable-next-line
+  const [menuList, setMenuList] = useState([
+    {
+      key: 'one',
+      type: 'UserOutlined',
+      span: 'nav 1'
+    },
+    {
+      key: 'two',
+      type: 'video-camera',
+      span: 'nav 2'
+    },
+    {
+      key: 'three',
+      type: 'upload',
+      span: 'nav 3'
     }
+  ]);
+
+  const [current, setCurrent] = useState('one');
+  const [item, setItem] = useState({
+    key: 'one'
+  })
+
+  const getCollapsed = (data) => {
+    setCollapsed(data);
   }
 
-  toggle = function() {
-    // 顶部点击隐藏或展开左侧目录
-    this.setState({
-      collapsed: !this.state.collapsed,
-    })
-  }
-
-  routLink = (item) =>　{
-    // console.log(item)
-    this.setState({
-      current: item.key,
-      item: item
-    })
+  const routLink = (item) => {
+    setCurrent(item.key);
+    setItem(item);
   }
   
 
-  render () {
-    const showMenu = this.state.menuList.map(item => 
+    const showMenu = menuList.map(item => 
       <Menu.Item key={item.key}>
-        <Icon type={item.type} />
+        {/* <Icon type={item.type} /> */}
         <span>{item.span}</span>
       </Menu.Item>
     )
@@ -69,28 +65,27 @@ class SiderDemo extends Component {
           }}
           trigger={null}
           collapsible
-          collapsed={this.state.collapsed}
+          collapsed={collapsed}
         >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" selectedKeys={[this.state.current]} onClick={this.routLink}>
+          <Menu theme="dark" mode="inline" selectedKeys={[current]} onClick={routLink}>
             {showMenu}
           </Menu>
         </Sider>
         <Layout>
           {/* header */}
           <HeaderDemo
-            state={this.state}
-            callback={this.toggle.bind(this)}
+            sendCollapsed={collapsed}
+            getBackCollapsed={getCollapsed}
           ></HeaderDemo>
           {/* content */}
           <ContentDemo
-            props={this.props}
-            item={this.state.item}
+            props={props}
+            item={item}
           ></ContentDemo>
         </Layout>
       </Layout>
     )
-  }
 
 }
 

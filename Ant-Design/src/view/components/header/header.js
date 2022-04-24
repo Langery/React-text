@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { Layout, Icon } from 'antd';
+import './headere.css';
+
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
+
 const { Header } = Layout;
 
-const HeaderDemo = (props) => {
+const HeaderDemo = props => {
+
+  // eslint-disable-next-line
+  const [collapsed, setCollapsed] =  useState(props.sendCollapsed)
+
   const toggle = () => {
-    return () => {
-      props.callback()
-    }
+    setCollapsed(!collapsed)
   }
+
+  useEffect(() => {
+    props.getBackCollapsed(collapsed);
+  }, [collapsed])
   return (
-    <Header style={{background: '#fff', padding: 0}}>
-      <Icon
-        className="trigger"
-        type={props.collapsed ? 'menu-unfold' : 'menu-fold'}
-        onClick={toggle()}
-      />
+    <Header className="header_style">
+      {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+        className: 'trigger',
+        onClick: toggle,
+      })}
     </Header>
   )
 }
