@@ -6,11 +6,9 @@ import { Button } from 'react-desktop/macOs';
 class Btn extends Component {
   render () {
     return (
-      <div>
-        <Button color="blue" onClick={() => console.log('Click!')}>
-          Press me!
-        </Button>
-      </div>
+      <Button color="blue" onClick={() => console.log('Click!')}>
+        Press me!
+      </Button>
     );
   }
 }
