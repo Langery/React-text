@@ -1,5 +1,5 @@
 import React from "react";
-import NavOne from '../nav/nav1/nav1'
+import NavOne from '../nav/nav1/nav1.tsx'
 import NavTwo from '../nav/nav2/nav2'
 import NavThree from '../nav/nav3/nav3'
 
