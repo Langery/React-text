@@ -1,13 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrumbModel from '../../breadcrumb/breadcrumb';
 import { Form, Input, Button } from 'antd';
 
-const FormSelf: React.FC<> = () => {
-  const Inner = <ItemInner/>
+const FormSelf: React.FC<> = (props) => {
+  const changeValue = (data) => {
+    // console.log(data)
+    props.backUp(data)
+  }
+  const Inner = <ItemInner backInput={changeValue} />
+  console.log(Inner)
   return (
     <Form.Item
       label="Text"
       name="text"
+      rules={[]}
     >
       {/* <ItemInner></ItemInner> */}
       {Inner}
@@ -15,21 +21,24 @@ const FormSelf: React.FC<> = () => {
   )
 }
 
-interface InnerProps {
-  _v?: String
-}
-
-const ItemInner:React.FC<InnerProps> = (_v) => {
-  console.log(_v)
+const ItemInner:React.FC<> = (props) => {
+  const handleChange = (e) => {
+    const { value } = e.target;
+    props.backInput(value)
+  }
+  
   return (
-    <Input value={_v.value} />
+    <Input onChange={handleChange} />
   )
 }
 
 const NavOne = () => {
-  const order = [
+  // eslint-disable-next-line
+  const [order, setOrder] = useState([
     'Home', 'Nav 1'
-  ];
+  ]);
+
+  const [textValue, setTextValue] = useState(null)
 
   useEffect(() => {
 
@@ -37,6 +46,11 @@ const NavOne = () => {
 
   const onFinish = (value) => {
     console.log(value)
+    value.text = textValue;
+  }
+
+  const selfValue = (data) => {
+    setTextValue(data)
   }
 
   return (
@@ -65,7 +79,7 @@ const NavOne = () => {
         >
           <Input.Password />
         </Form.Item>
-        <FormSelf></FormSelf>
+        <FormSelf backUp={selfValue}></FormSelf>
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
