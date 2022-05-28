@@ -4,7 +4,6 @@ import { Form, Input, Button } from 'antd';
 
 const FormSelf: React.FC<> = (props) => {
   const changeValue = (data) => {
-    // console.log(data)
     props.backUp(data)
   }
   const Inner = <ItemInner backInput={changeValue} />
@@ -15,7 +14,6 @@ const FormSelf: React.FC<> = (props) => {
       name="text"
       rules={[]}
     >
-      {/* <ItemInner></ItemInner> */}
       {Inner}
     </Form.Item>
   )
@@ -38,6 +36,9 @@ const NavOne = () => {
     'Home', 'Nav 1'
   ]);
 
+  const form = Form.useForm()[0];
+  console.log(form);
+
   const [textValue, setTextValue] = useState(null)
 
   useEffect(() => {
@@ -47,6 +48,7 @@ const NavOne = () => {
   const onFinish = (value) => {
     console.log(value)
     value.text = textValue;
+    form.resetFields();
   }
 
   const selfValue = (data) => {
@@ -64,6 +66,7 @@ const NavOne = () => {
         labelCol={{span: 4}}
         wrapperCol={{span: 14}}
         onFinish={onFinish}
+        form={form}
       >
         <Form.Item
           label="Input"
